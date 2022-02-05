@@ -23,4 +23,9 @@ public class Test1 {
 
 
     }
+
+    @Test
+    void test1(){
+        System.out.println(1);
+    }
 }
