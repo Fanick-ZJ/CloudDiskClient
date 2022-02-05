@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Test1 {
     @Test
@@ -26,6 +28,10 @@ public class Test1 {
 
     @Test
     void test1(){
-        System.out.println(1);
+        String regix = "\\d{7}$";
+        String str = "1234576";
+        Pattern pattern = Pattern.compile(regix);
+        Matcher mather = pattern.matcher(str);
+        System.out.println(mather.matches());
     }
 }

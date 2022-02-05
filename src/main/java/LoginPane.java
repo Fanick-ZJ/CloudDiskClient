@@ -24,6 +24,8 @@ import javafx.util.Duration;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class LoginPane {
     static double x;
@@ -219,15 +221,56 @@ public class LoginPane {
         new DragListener(stage).enableDrag(top);
 
 
+
         //按钮点击事件
         registerButton.setOnMouseClicked(event -> {
+            String account = raccount.getText();
+            if(account.length()<10 || account.length()>10){
+                rerrorLable.setText("请输入账号的长度为10为");
+                return;
+            }else{
+                String regix = "\\d{10}$";
+                Pattern pattern = Pattern.compile(regix);
+                Matcher mather = pattern.matcher(account);
+                if(!mather.matches()){
+                    rerrorLable.setText("账号只能为数字");
+                    return;
+                }
+            }
+            String password = rpassword.getText();
+            if(password.length()<6 ||password.length()>13){
+                rerrorLable.setText("密码长度为6-13位");
+                return;
+            }else{
+                String regix = "^[a-zA-Z]\\w{5,17}$";
+                Pattern pattern = Pattern.compile(regix);
+                Matcher mather = pattern.matcher(password);
+                if(!mather.matches()){
+                    rerrorLable.setText("只能包含字符、数字和下划线");
+                    return;
+                }
+            }
+            //检测账号是否重复
             String url = "http://localhost:8081/cloudedisk/user/accountExist";
             Map<String,String> header = new HashMap<>();
             header.put("Content-Type", "application/json; charset=utf-8");
             Map<String,String> param = new HashMap<>();
-            param.put("account",raccount.getText());
+            param.put("account",account);
             R r = RequestSender.get(url, header, param);
-            rerrorLable.setText(r.getMessage());
+            if(r.getSuccess()){
+                url = "http://localhost:8081/cloudedisk/user/register";
+                param.clear();
+                param.put("id","0");
+                param.put("userAccount",account);
+                param.put("userPassword",password);
+                param.put("registerDate","");
+                param.put("userEmail","");
+                param.put("userCloudRootPath","");
+                r = RequestSender.post(url,header,param);
+                if(r.getSuccess()){
+                    rerrorLable.setText("注册成功，可以去登录啦");
+                }
+            }
         }
         );
 
