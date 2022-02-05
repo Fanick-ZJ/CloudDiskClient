@@ -1,0 +1,66 @@
+#closeProjectButton{
+    -fx-background-image: url("../icon/close.png");
+    -fx-background-position: center;
+    -fx-background-size: 40%;
+    -fx-background-repeat: no-repeat;
+    -fx-border-radius: 0px 10px 0px 0px;
+    -fx-background-radius: 0px 10px 0px 0px;
+}
+#minimizeButton{
+    -fx-background-image: url("../icon/minize.png");
+    -fx-background-position: center;
+    -fx-background-size: 60%;
+    -fx-background-repeat: no-repeat;
+}
+#logo{
+    -fx-font-size: 40px;
+    -fx-font-family: "Microsoft YaHei UI";
+}
+#LoRBody{
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+#loginLabel{
+    -fx-font-size: 20;
+    -fx-alignment: center;
+    -fx-font-family: "Microsoft YaHei UI";
+    -fx-border-radius: 10px 0px 0px 0px;
+    -fx-background-radius: 10px 0px 0px 0px;
+}
+#registerLabel{
+     -fx-font-size: 20;
+    -fx-alignment: center;
+     -fx-font-family: "Microsoft YaHei UI";
+    -fx-background-color: #f5f5f6;
+    -fx-border-radius: 0px 10px 0px 0px;
+    -fx-background-radius: 0px 10px 0px 0px;
+ }
+#loginPart{
+
+    -fx-background-color: #ffffff;
+}
+
+#account{
+    -fx-background-color: #f7f7f7;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+#password{
+    -fx-background-color: #f7f7f7;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}#loginButton{
+     -fx-background-color: #aebfff;
+     -fx-border-radius: 10px;
+     -fx-background-radius: 10px;
+     -fx-text-fill: #ffffff;
+
+ }
+ #errorLable{
+     -fx-text-fill:#fe265e ;
+ }
+
+ #rerrorLable{
+     -fx-text-fill:#fe265e ;
+ }
